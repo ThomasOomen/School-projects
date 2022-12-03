@@ -1,0 +1,49 @@
+<div class="container container-center">
+   <h1 class="text-light text-center">Taken overzicht</h1>
+</div>
+
+<div class="container container-center">
+   <table class="table table-dark">
+      <thead>
+         <tr>
+            <th>Naam</th>
+            <th>Omschrijving</th>
+            <th>Symbool</th>
+            <th>type</th>
+            <th>Public template</th>
+            <th>Duration</th>
+            <th colspan="2">Acties</th>
+         </tr>
+      </thead>
+      <tbody>
+         <tr *ngFor="let task of tasks">
+            <td>{{ task.name }}</td>
+            <td>{{ task.description }}</td>
+            <td> 
+               <img *ngIf="task.symbol" src="http://localhost:3001/{{task.symbol}}">
+            </td>
+            <td>{{ task.type }}</td>
+            <td>{{ task.public_template }}</td>
+            <td>{{ task.duration }}</td>
+            <td>  
+               <p *ngIf="allSubTasksIds.includes(task._id)">Is deeltaak</p>
+               <a *ngIf="task.type === 'taak in taak' && !allSubTasksIds.includes(task._id)" class="btn btn-primary ml-1 " routerLink="/tasks-update/{{task._id}}" role="button">Aanpasssen</a> 
+               <a *ngIf="task.type === 'normale taak' && !allSubTasksIds.includes(task._id)" class="btn btn-primary ml-1 " routerLink="/tasks-build-update/{{task._id}}" role="button">Aanpasssen</a> 
+               <a *ngIf="task.type === 'dagtaak' && !allSubTasksIds.includes(task._id)" class="btn btn-primary ml-1 " routerLink="/daytask-update/{{task._id}}" role="button">Aanpasssen</a> 
+               <a *ngIf="!allSubTasksIds.includes(task._id)" class="btn btn-danger ml-1 "  (click)="RemoveTask(task._id)" role="button">Verwijderen</a> 
+            </td>
+         </tr>
+      </tbody>
+   </table>
+   
+   <a class="btn btn-success spacing" routerLink="/tasks-new" id="new-task">
+      Nieuwe taak
+   </a>
+   <a class="btn btn-success spacing" routerLink="/tasks-build" id="new-full-task">
+      Nieuwe volledige taak
+   </a>
+   <a class="btn btn-success spacing" routerLink="/daytask-post" id="new-daytask">
+      Nieuwe dagtaak
+   </a>
+</div>
+

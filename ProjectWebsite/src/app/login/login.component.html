@@ -1,0 +1,31 @@
+
+<div class="container bg-dark container-center pb-3 pt-1">
+  <div class="container container-center">
+    <h1 class="text-light text-center">Login</h1>
+  </div>
+    <form>
+      <div class="col-6" [formGroup]="userLogin">
+        <div class="container">
+            <label class="text-light" for="email">Email adres</label>
+            <input type="email" id="email" class="form-control"  formControlName="email" placeholder="voer e-mail adres in" [ngClass]="{ 'is-invalid': submitted && userLogin.controls.email.errors }">
+            <div *ngIf="submitted && userLogin.controls.email.errors" class="invalid-feedback">
+              <div *ngIf="userLogin.controls.email.errors.required">Email adres is een verplicht veld </div>
+              <div *ngIf="userLogin.controls.email.errors.pattern">Dit is geen geldig email adres </div>
+            </div>
+        </div>
+
+        <div class="container pt-2">
+          <label class="text-light" for="password">Password</label>
+          <input type="password" id="password" class="form-control" formControlName="password" placeholder="wachtwoord" [ngClass]="{ 'is-invalid': submitted && userLogin.controls.password.errors }">
+          <div *ngIf="submitted && userLogin.controls.password.errors" class="invalid-feedback">
+            <div *ngIf="userLogin.controls.password.errors.required">Wachtwoord is een verplicht veld</div>
+            <div *ngIf="userLogin.controls.password.errors.passwordIncorrect">Wachtwoord of email incorrect</div>
+          </div>
+        </div>
+
+          <div class="container pt-2">
+            <button type="submit" (click)="Login()" id="save-button" class="btn btn-primary">Inloggen</button>
+          </div>
+        </div>
+      </form>
+  </div>

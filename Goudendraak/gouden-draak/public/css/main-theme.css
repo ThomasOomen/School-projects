@@ -1,0 +1,65 @@
+.antialiased {
+    background-color: red;
+}
+
+.theme-table {
+    padding: 5px;
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.theme-table > * {
+    background-color: red;
+}
+
+.small-row {
+    height: 7px;
+}
+
+.medium-row {
+    height: 25px;
+}
+
+.dropdown-menu.show {
+    margin-left: 85%;
+}
+
+.big-row {
+    height: 50px;
+}
+
+.small-col {
+    width: 7px;
+}
+
+.medium-col {
+    width: 25px;
+}
+
+.content-col {
+    text-align: center;
+}
+
+.left-border {
+    border-left: 4px solid
+}
+
+.right-border {
+    border-right: 4px solid
+}
+
+.top-border {
+    border-top: 4px solid
+}
+
+.bottom-border {
+    border-bottom: 4px solid;
+}
+
+.full-border {
+    border: 4px solid;
+}
+
+.yellow-border {
+    border-color: yellow;
+}

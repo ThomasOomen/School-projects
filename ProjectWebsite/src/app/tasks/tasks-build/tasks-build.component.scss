@@ -1,0 +1,57 @@
+.container{
+    max-width: 1500px;
+}
+
+.default-height{
+    min-height: 100px;
+}
+
+.dot {
+    height: 25px;
+    width: 25px;
+    background-color:red;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+.close {
+    color: white;
+    text-shadow: none;
+}
+.area {
+    padding: 15px;
+    min-height: 100px;
+}
+
+#combinedTasks {
+    border: 3px dashed rgb(255, 255, 255);
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+    text-align: center;
+    font: 21pt;
+    color: rgb(255, 255, 255);
+}
+
+.areaFilled {
+    padding: 15px;
+    max-height: 50px;
+}
+
+.small-text {
+    font: 10pt;
+    color: rgb(255, 255, 255);
+}
+
+.subtask {
+    padding-left: 100px;
+}
+
+.time:before {
+    content: "\f017";  /* this is your text. You can also use UTF-8 character codes as I do here */
+    font-family: FontAwesome;
+ }
+
+img {
+    height: 60px;
+    width: 100px;
+}

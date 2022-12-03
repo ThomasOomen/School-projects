@@ -1,0 +1,59 @@
+<div class="container bg-dark container-center">
+  <form>
+    <div class="col-6" [formGroup]="createFacility">
+      <div class="container pt-2">
+        <label class="text-light" for="name">Naam</label>
+        <input type="text" class="form-control" formControlName="name" placeholder="voer naam in" [ngClass]="{ 'is-invalid': submitted && createFacility.controls.name.errors }">
+        <div *ngIf="submitted && createFacility.controls.name.errors" class="invalid-feedback">
+          <div *ngIf="createFacility.controls.name.errors.required">Naam is een verplicht veld</div>
+        </div>
+      </div>
+
+        <div class="container">
+            <label class="text-light" for="email">Email adres</label>
+            <input type="email" class="form-control"  formControlName="email" placeholder="voer e-mail adres in" [ngClass]="{ 'is-invalid': submitted && createFacility.controls.email.errors }">
+            <div *ngIf="submitted && createFacility.controls.email.errors" class="invalid-feedback">
+              <div *ngIf="createFacility.controls.email.errors.required">Email adres is een verplicht veld </div>
+              <div *ngIf="createFacility.controls.email.errors.pattern">Dit is geen geldig email adres </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <label  class="text-light" for="phonenumber">Telefoonnummer</label>
+            <input type="tel" class="form-control"  formControlName="phonenumber" placeholder="Bijvoorbeeld: 0612345678" [ngClass]="{ 'is-invalid': submitted && createFacility.controls.phonenumber.errors }">
+            <div *ngIf="submitted && createFacility.controls.phonenumber.errors" class="invalid-feedback">
+              <div *ngIf="createFacility.controls.phonenumber.errors.required">Telefoonnummer is een verplicht veld </div>
+              <div *ngIf="createFacility.controls.phonenumber.errors.pattern">Dit is geen geldig telefoonnummer </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <label class="text-light" for="zipcode">Postcode</label>
+            <input type="text" class="form-control" formControlName="zipcode" placeholder="Bijvoorbeeld: 1234AB" [ngClass]="{ 'is-invalid': submitted && createFacility.controls.zipcode.errors }">
+            <div *ngIf="submitted && createFacility.controls.zipcode.errors" class="invalid-feedback">
+              <div *ngIf="createFacility.controls.zipcode.errors.required">Postcode is een verplicht veld </div>
+              <div *ngIf="createFacility.controls.zipcode.errors.pattern">Dit is geen geldige Postcode </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <label class="text-light" for="housenumber">huisnummer</label>
+            <input type="text" class="form-control" formControlName="housenumber" placeholder="Bijvoorbeeld: 25a" [ngClass]="{ 'is-invalid': submitted && createFacility.controls.housenumber.errors }">
+            <div *ngIf="submitted && createFacility.controls.housenumber.errors" class="invalid-feedback">
+              <div *ngIf="createFacility.controls.housenumber.errors.required">Postcode is een verplicht veld </div>
+              <div *ngIf="createFacility.controls.housenumber.errors.pattern">Dit is geen geldige Postcode </div>
+            </div>
+        </div>
+
+        <div class="container pt-2">
+          <button type="submit" (click)="CreateFacility()"  id="save-button" class="btn btn-primary">Opslaan</button>
+        </div>
+      </div>
+    </form>
+  
+    <div class="container pt-2">
+      <a class="btn btn-danger spacing" routerLink="/facility" role="button" id="back-button">
+          Terug
+      </a>
+    </div>
+</div>

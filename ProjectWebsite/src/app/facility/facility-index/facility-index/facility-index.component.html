@@ -1,0 +1,36 @@
+<div class="container container-center">
+   <h1 class="text-light text-center">Zorginstelling overzicht</h1>
+</div>
+
+<div class="container container-center" >
+   <table class="table table-dark">
+      <thead>
+         <tr>
+            <th>Naam</th>
+            <th>Email</th>
+            <th>Telefoonnummer</th>
+            <th>Postcode</th>
+            <th>Huisnummer</th>
+            <th>Acties</th>
+         </tr>
+      </thead>
+      <tbody>
+         <tr *ngFor="let facility of facilities">
+            <td>{{ facility.name }}</td>
+            <td>{{ facility.email }}</td>
+            <td>{{ facility.phonenumber}}</td>
+            <td>{{ facility.zipcode }}</td>
+            <td>{{ facility.housenumber }}</td>
+            <td>
+               <a class="btn btn-primary ml-1 " href="/facility-update/{{facility._id}}" role="button">Aanpasssen</a>
+               <a class="btn btn-danger ml-1 "  (click)="RemoveFacility(facility._id)" role="button">Verwijderen</a>
+               <a class="btn btn-success ml-1 " href="/facility-users/{{facility._id}}" role="button">Gebruikers</a>
+            </td>
+         </tr>
+      </tbody>
+   </table>
+
+   <a class="btn btn-success spacing" href="/facility-create" id="new-facility" role="button">
+      Nieuwe zorginstelling
+   </a>
+</div>

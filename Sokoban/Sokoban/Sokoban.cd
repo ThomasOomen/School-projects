@@ -1,0 +1,170 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Comment CommentText="View">
+    <Position X="1.932" Y="0.5" Height="0.598" Width="1.176" />
+  </Comment>
+  <Class Name="Sokoban.Destination">
+    <Position X="14.75" Y="10.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AABAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAARAAEAIAA=</HashCode>
+      <FileName>Destination.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Sokoban.Wall">
+    <Position X="6" Y="11.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AABAAAAIAAQAAAAAAAAAAAAAAAAAAAAAAAARAAAAIAA=</HashCode>
+      <FileName>Wall.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Sokoban.Square">
+    <Position X="8.75" Y="15.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AABACAAAAAAAAAQAIAAAAAAAAABAIAAAABAIAAAAAAA=</HashCode>
+      <FileName>Square.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Sokoban.Truck">
+    <Position X="10.75" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAIAAAAAACAAAAAAAAAAAAAAAAAAAARAAAAIAA=</HashCode>
+      <FileName>Truck.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Sokoban.Floor">
+    <Position X="8.75" Y="11.75" Width="1.5" />
+    <AssociationLine Name="hasDestination" Type="Sokoban.Destination">
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="0.047" Y="1.102" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <AssociationLine Name="isDestroyable" Type="Sokoban.DestroyableTile">
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="0.07" Y="0.995" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AABAAAAIAAAAAAAAAAAAAAAgAAAAAAAAgAARAAAAIAA=</HashCode>
+      <FileName>Floor.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="hasDestination" />
+      <Field Name="isDestroyable" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="Sokoban.Parser">
+    <Position X="12.75" Y="1.25" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AABAAIAAAAA6BAAAAABAgACCAAAgAAQAAAAAAgBAAAI=</HashCode>
+      <FileName>Parser.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Sokoban.Game">
+    <Position X="6" Y="5" Width="1.5" />
+    <AssociationLine Name="truck" Type="Sokoban.Truck" ManuallyRouted="true" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="7.5" Y="5.824" />
+        <Point X="11.562" Y="5.824" />
+        <Point X="11.562" Y="6.5" />
+      </Path>
+      <MemberNameLabel ManuallyPlaced="true" ManuallySized="true">
+        <Position X="0.018" Y="0.11" Height="0.182" Width="0.598" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <AssociationLine Name="crate" Type="Sokoban.Crate" ManuallyRouted="true" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="7.5" Y="6.059" />
+        <Point X="9.375" Y="6.059" />
+        <Point X="9.375" Y="6.5" />
+      </Path>
+    </AssociationLine>
+    <AssociationLine Name="coworker" Type="Sokoban.Coworker" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="7.5" Y="5.588" />
+        <Point X="12.5" Y="5.588" />
+        <Point X="12.5" Y="6.199" />
+        <Point X="13.5" Y="6.199" />
+        <Point X="13.5" Y="6.5" />
+      </Path>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AgAAAAAAEAEIAABAABABABACAAAAAAYAEAACAAAAIAA=</HashCode>
+      <FileName>Game.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="inputView" />
+      <Field Name="outputView" />
+      <Field Name="parser" />
+      <Field Name="truck" />
+      <Field Name="crate" />
+      <Field Name="coworker" />
+      <Field Name="maze" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="Sokoban.InputView">
+    <Position X="4.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAAAAAAAAEAAAAAAAAAAAAAAABAAAAACACAAAAAAAAA=</HashCode>
+      <FileName>InputView.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Sokoban.OutputView">
+    <Position X="8" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAA=</HashCode>
+      <FileName>OutputView.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Sokoban.Crate">
+    <Position X="8.75" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAIAAAAAACAAAAAAAAAAAAAAAAAAAARAAAAIAA=</HashCode>
+      <FileName>Crate.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Sokoban.Coworker">
+    <Position X="12.75" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gAAQAAAIAAAAAACAAAAAAAAAAAAAACAAAAARAAAAIAA=</HashCode>
+      <FileName>Coworker.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Sokoban.DestroyableTile">
+    <Position X="11.75" Y="10.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AABAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAARAAAAIAA=</HashCode>
+      <FileName>DestroyableTile.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Sokoban.Program">
+    <Position X="0.5" Y="5.5" Width="1.5" />
+    <AssociationLine Name="game" Type="Sokoban.Game" FixedFromPoint="true">
+      <Path>
+        <Point X="2" Y="5.938" />
+        <Point X="6" Y="5.938" />
+      </Path>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAABAAAAAA=</HashCode>
+      <FileName>Program.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="game" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="Sokoban.MoveableObjects" Collapsed="true">
+    <Position X="17.25" Y="9" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAASAIAAAAAAAAABAIAAAAAAAAAAAAAA=</HashCode>
+      <FileName>MoveableObjects.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Sokoban.Maze">
+    <Position X="3" Y="10" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAgAABACAAAAACIAAAEARgBAABIAAQAAAACAAAAA=</HashCode>
+      <FileName>Maze.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

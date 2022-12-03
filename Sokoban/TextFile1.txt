@@ -1,0 +1,5 @@
+Main game loop
+Start postitie van heftruck
+Bewegen van heftruck
+Bewegen van krat
+Maken van objecten

@@ -1,0 +1,27 @@
+<div class="container container-center">
+    <h1 class="text-light text-center">Clienten overzicht</h1>
+ </div>
+ 
+ <div class="container container-center" >
+     <table class="table table-dark">
+        <thead>
+           <tr>
+              <th>Naam</th>
+              <th>Email</th>
+              <th>Acties</th>
+           </tr>
+        </thead>
+        <tbody>
+           <tr *ngFor="let user of users">
+              <td>{{ user.firstname + " " + user.lastname}}</td>
+              <td>{{ user.email }}</td>
+              <td>
+                 <a class="btn btn-primary ml-1 " routerLink="/users-update/{{user._id}}" role="button">Aanpassen</a> 
+                 <a class="btn btn-light ml-1 " routerLink="/user-task/{{user._id}}" role="button">Dagtaak toewijzen</a>  
+                </td>
+           </tr>
+        </tbody>
+     </table>
+  </div>
+  
+ 

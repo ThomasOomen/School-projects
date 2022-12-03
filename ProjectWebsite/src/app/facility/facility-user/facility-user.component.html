@@ -1,0 +1,61 @@
+<div class="container-center" >
+   <h1 class="text-light">{{"Gebruikers van: " + facility.name}}</h1>
+   <div class="row">
+      <div class="col-6">
+         <label class="text-light">Filter op</label>
+         <input matInput class="form-control" (keyup)="applyFilter($event)" placeholder="Vul hier de naam of email van de gebruiker in" #input>
+      </div>
+   </div>
+   <div class="row">
+   <div class="col-4">
+      
+       <table mat-table [dataSource]="dataSource" class="table table-dark">
+       
+         <!-- Position Column -->
+         <ng-container matColumnDef="name">
+           <th *matHeaderCellDef> Naam </th>
+           <td class="testrow" *matCellDef="let user"> {{user.firstname + " " + user.lastname}} </td>
+         </ng-container>
+         <ng-container matColumnDef="email">
+            <th *matHeaderCellDef> Email </th>
+            <td *matCellDef="let user"> {{user.email}} </td>
+         </ng-container>
+          <ng-container matColumnDef="acties">
+            <th *matHeaderCellDef> Acties</th>
+            <td *matCellDef="let user">  <a class="btn btn-success ml-1 "  (click)="AddUserToFacility(user._id)" role="button">Gebruiker koppelen</a>  </td>
+          </ng-container>
+         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+         <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+       
+         <!-- Row shown when there is no matching data. -->
+         <tr class="mat-row" *matNoDataRow>
+           <td  colspan="4">Geen gebruiker gevonden met: {{input.value}}</td>
+         </tr>
+       </table>
+   </div>
+   <div class="col-8">
+    <table class="table table-dark">
+       <thead>
+          <tr>
+             <th>Naam</th>
+             <th>Rol</th>
+             <th>Email</th>
+             <th>Acties</th>
+          </tr>
+       </thead>
+       <tbody>
+          <tr *ngFor="let user of facilityUsers">
+             <td class="testrow1">{{ user.firstname + " " + user.lastname}}</td>
+             <td>{{ user.role }}</td>
+             <td>{{ user.email }}</td>
+             <td>
+                <a class="btn btn-primary ml-1 " routerLink="/users-update/{{user._id}}" role="button">Gebruiker aanpassen</a> 
+                <a class="btn btn-danger ml-1 "  (click)="RemoveUser(user._id)" role="button">Gebruiker loskoppelen van zorginstelling</a> 
+             </td>
+          </tr>
+       </tbody>
+    </table>
+   </div>
+</div>
+</div>
+ 

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <PreferenceScreen
+        android:title="Specify ingredient">
+    <ListPreference
+        android:entries="@array/favorite_ingredients"
+        android:entryValues="@array/favorite_ingredients"
+        android:key="ingredient"
+        android:title="Select ingredient"/>
+    </PreferenceScreen>
+</PreferenceScreen>

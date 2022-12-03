@@ -1,0 +1,17 @@
+<div class="container container-center">
+    <h1 class="text-light text-center">Dag taak aan client koppelen</h1>
+    <h2 class="text-light text-center">{{user.firstname + " " + user.lastname}}</h2>
+ </div>
+<div class="container bg-dark container-center">
+    <form>
+        <div class="container pt-2">
+            <label class="text-light m-3">Vul een datum voor de dagtaak in</label>
+            <mat-form-field  appearance="fill">
+            <mat-label>Datum</mat-label>
+            <input matInput  class="text-light" [matDatepicker]="dp">
+            <mat-datepicker-toggle matSuffix [for]="dp"></mat-datepicker-toggle>
+            <mat-datepicker #dp></mat-datepicker>
+            </mat-form-field>
+        </div>
+    </form>
+</div>

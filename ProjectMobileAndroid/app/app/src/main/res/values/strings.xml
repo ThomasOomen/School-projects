@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Hulpbehoevende app</string>
+    <string name="default_notification_channel_id">alarm_channel_id_01</string>
+    <string name="checkedMark"> \u2713</string>
+    <string name="preferenceRandomSound">randomize_sounds</string>
+
+</resources>

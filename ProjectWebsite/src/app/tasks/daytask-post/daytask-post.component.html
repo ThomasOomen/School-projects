@@ -1,0 +1,137 @@
+<div class="container bg-dark container-center">
+    <div class="row">
+        <div class="col-lg-6">
+            <mat-tab-group>
+                <mat-tab label="Alle taken" class="text-light">
+                    <div class="list" cdkDropList #allTaskList="cdkDropList" [cdkDropListData]="allTasks"
+                        [cdkDropListConnectedTo]="[newTaskList]" (cdkDropListDropped)="onDrop($event)">
+                        <div *ngFor="let item of allTasks" cdkDrag
+                            class="bg-secondary spacing-large-text inner-spacing rounded-border text-light">
+                            {{item.name}}
+                        </div>
+                    </div>
+                </mat-tab>
+                <mat-tab label="Dagtaken">
+                    <div class="list" cdkDropList #dayTaskList="cdkDropList" [cdkDropListData]="dayTasks"
+                        [cdkDropListConnectedTo]="[newTaskList]" (cdkDropListDropped)="onDrop($event)">
+                        <div *ngFor="let item of dayTasks" cdkDrag
+                            class="bg-secondary spacing-large-text inner-spacing rounded-border text-light">
+                            {{item.name}}
+                        </div>
+                    </div>
+                </mat-tab>
+                <mat-tab label="Normale taken">
+                    <div class="list" cdkDropList #normalTaskList="cdkDropList" [cdkDropListData]="normalTasks"
+                        [cdkDropListConnectedTo]="[newTaskList]" (cdkDropListDropped)="onDrop($event)">
+                        <div *ngFor="let item of normalTasks" cdkDrag
+                            class="bg-secondary spacing-large-text inner-spacing rounded-border text-light">
+                            {{item.name}}
+                        </div>
+                    </div>
+                </mat-tab>
+                <mat-tab label="Individuele taken">
+                    <div class="list" cdkDropList #individualTaskList="cdkDropList"
+                        [cdkDropListData]="individualTasks" [cdkDropListConnectedTo]="[newTaskList]"
+                        (cdkDropListDropped)="onDrop($event)">
+                        <div *ngFor="let item of individualTasks" cdkDrag
+                            class="bg-secondary spacing-large-text inner-spacing rounded-border text-light">
+                            {{item.name}}
+                        </div>
+                    </div>
+                </mat-tab>
+            </mat-tab-group>
+        </div>
+
+        <div class="col-lg-6">
+            <h1 class="text-light text-center">Creëer dagtaak:</h1>
+            <div class="spacing">
+                <div id="combinedTasks" class="list default-height area" cdkDropList #newTaskList="cdkDropList"
+                    [cdkDropListData]="initialList"
+                    [cdkDropListConnectedTo]="[allTaskList, dayTaskList, normalTaskList, individualTaskList]"
+                    (cdkDropListDropped)="returnDrop($event)">
+
+                    <div *ngFor="let item of initialList" cdkDrag>
+                        <div class="bg-secondary spacing-large-text inner-spacing rounded-border text-light">
+                            {{item.name}} | {{ item.duration }}
+                            <input type="time" class="small-input">
+                            <button type="button" class="dot close text-shadow-none" aria-label="Close"
+                                (click)="deleteEntry(item._id)">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div *ngIf="initialList.length === 0" id="dropZone" class="area">
+                        Drop here
+                    </div>
+
+                    <div *ngIf="initialList.length > 0" id="dropZone" class="areaFilled small-text">
+                        Drop more
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container container-center bg-dark">
+    <form>
+        <div [formGroup]="createTask">
+            <div class="container pt-2 mb-4">
+                <label for="name" class="text-light">Taak naam</label>
+                <input type="text" class="form-control" id="name" formControlName="name"
+                    [ngClass]="{ 'is-invalid': submitted && createTask.controls.name.errors }">
+                <div *ngIf="submitted && createTask.controls.name.errors" class="invalid-feedback">
+                    <div *ngIf="createTask.controls.name.errors.required">Naam is een verplicht veld</div>
+                </div>
+            </div>
+
+            <div class="container mb-4">
+                <label for="description" class="text-light">Taakomschrijving</label>
+                <textarea id="description" name="description" formControlName="description" cols="40" rows="3"
+                    class="form-control"></textarea>
+            </div>
+
+            <div class="container mb-4">
+                <label for="symbolFile" class="text-light">Kies symbool</label>
+                <div class="custom-file">
+                    <input type="file" class="custom-file-input" id="symbolFile" name="symbolFile"
+                        formControlName="symbolFile" (change)="onFileChange($event)">
+                    <label class="custom-file-label" for="symbolFile">Kies symbool</label>
+                    <img [src]="imageSrc" *ngIf="imageSrc" class="spacing mb-4">
+                </div>
+            </div>
+
+            <div class="container mb-4">
+                <label for="type-selection" class="text-light">Kies user</label>
+                <div class="form-group">
+                    <select class="form-control" formControlName="user_id" id="type-selection"
+                        [ngClass]="{ 'is-invalid': submitted && createTask.controls.type.errors}">
+                        <option *ngFor="let user of users" [value]="user._id">{{user.firstname}} {{user.lastname}}</option>
+                    </select>
+                    <div *ngIf="submitted && createTask.controls.type.errors" class="invalid-feedback">
+                        <div *ngIf="createTask.controls.type.errors.required">type is een verplicht veld</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="container mb-4">
+                <label class="text-light">Sjabloon</label>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="template"
+                        formControlName="private_template">
+                    <label class="form-check-label text-light" for="template">Privé</label>
+                </div>
+            </div>
+
+            <div class="container">
+                <button type="submit" (click)="CreateTask()" class="btn btn-primary spacing"
+                    id="save-button">Opslaan</button>
+
+                <a class="btn btn-danger spacing" routerLink="/tasks" role="button" id="back-button">
+                    Terug
+                </a>
+            </div>
+        </div>
+    </form>
+</div>

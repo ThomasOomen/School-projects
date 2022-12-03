@@ -1,0 +1,66 @@
+<div class="container bg-dark container-center">
+    <form>
+        <div [formGroup]="createUser">
+            <div class="container pt-2">
+                <label for="firstname" class="text-light">Voornaam</label>
+                <input type="text" class="form-control" id="firstname" formControlName="firstname" [ngClass]="{ 'is-invalid': submitted && createUser.controls.firstname.errors }">
+                <div *ngIf="submitted && createUser.controls.firstname.errors" class="invalid-feedback">
+                    <div *ngIf="createUser.controls.firstname.errors.required">Voornaam is een verplicht veld</div>
+                </div>
+            </div>
+
+            <div class="container pt-2">
+                <label for="lastname" class="text-light">Achternaam</label>
+                <input type="text" class="form-control" id="lastname" formControlName="lastname" [ngClass]="{ 'is-invalid': submitted && createUser.controls.lastname.errors }">
+                <div *ngIf="submitted && createUser.controls.lastname.errors" class="invalid-feedback">
+                    <div *ngIf="createUser.controls.lastname.errors.required">Achternaam is een verplicht veld</div>
+                </div>
+            </div>
+
+            <div class="container">
+                <label class="text-light" for="email">Email adres</label>
+                <input type="email" class="form-control"  formControlName="email" placeholder="voer e-mail adres in" [ngClass]="{ 'is-invalid': submitted && createUser.controls.email.errors}">
+                <div *ngIf="submitted && createUser.controls.email.errors" class="invalid-feedback">
+                  <div *ngIf="createUser.controls.email.errors.required">Email adres is een verplicht veld </div>
+                  <div *ngIf="createUser.controls.email.errors.pattern">Dit is geen geldig email adres </div>
+                  <div *ngIf="createUser.controls.email.errors.emailExist">Dit email adres bestaat al </div>
+                </div>
+                
+            </div>
+
+            <div class="container pt-2">
+                <label for="role-selection" class="text-light">Kies rol</label>
+                <div class="form-group">
+                    <select class="form-control" formControlName="role" id="role-selection" [ngClass]="{ 'is-invalid': submitted && createUser.controls.role.errors}">
+                        <option>Beheerder</option>
+                        <option>Zorgmedewerker</option>
+                        <option>Client</option>
+                    </select>
+                    <div *ngIf="submitted && createUser.controls.role.errors" class="invalid-feedback">
+                        <div *ngIf="createUser.controls.role.errors.required">rol is een verplicht veld</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="container">
+                <label class="text-light" for="password">Wachtwoord</label>
+                <input type="password" class="form-control"  formControlName="password" placeholder="voer e-mail adres in" [ngClass]="{ 'is-invalid': submitted && createUser.controls.password.errors }">
+                <div *ngIf="submitted && createUser.controls.password.errors" class="invalid-feedback">
+                  <div *ngIf="createUser.controls.password.errors.required">Wachtwoord is een verplicht veld </div>
+                  <div *ngIf="createUser.controls.password.errors.minLength">Wachtwoord moet uit minimaal 6 tekens bestaan </div>
+                </div>
+            </div>
+
+            <div class="container">
+                <button type="submit" (click)="CreateUser()" class="btn btn-primary" id="save-button">Opslaan</button>
+            </div>
+        </div>
+
+    </form>
+    <div class="container">
+        <a class="btn btn-danger spacing" routerLink="/users" role="button" id="back-button">
+            Terug
+         </a>
+    </div>
+</div>
+

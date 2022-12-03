@@ -1,0 +1,36 @@
+<div class="container container-center">
+   <h1 class="text-light text-center">Gebruikers overzicht</h1>
+</div>
+
+<div class="container container-center" >
+      <button (click)="GetClientUsers()" class="btn btn-dark" id="save-button">Laat Clienten zien</button>
+      <button (click)="GetUsers()" class="btn btn-dark ml-3" id="save-button">Laat alles zien</button>
+    <table class="table table-dark">
+       <thead>
+          <tr>
+             <th>Naam</th>
+             <th>Rol</th>
+             <th>Email</th>
+             <th>Acties</th>
+          </tr>
+       </thead>
+       <tbody>
+          <tr *ngFor="let user of users">
+             <td>{{ user.firstname + " " + user.lastname}}</td>
+             <td>{{ user.role }}</td>
+             <td>{{ user.email }}</td>
+             <td>
+                <a class="btn btn-primary ml-1 " routerLink="/users-update/{{user._id}}" role="button">Aanpassen</a> 
+                <a *ngIf="user._id != currentUser._id" class="btn btn-danger ml-1 "  (click)="RemoveUser(user._id)" role="button">Verwijderen</a>
+                <a *ngIf="user.role == 'Zorgmedewerker'" class="btn btn-success ml-1 " routerLink="/user-user/{{user._id}}" role="button">Clienten</a>  
+            
+               </td>
+          </tr>
+       </tbody>
+    </table>
+    
+    <a class="btn btn-success spacing" routerLink="/users-new" id="new-user">
+       Nieuwe gebruiker
+    </a>
+ </div>
+ 
